@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f9f6ef" />
+    <meta name="description" content="A little apology, a lot of love, and a very small flower delivery crew." />
+    <title>A little delivery, just for you</title>
+    <style>
+      :root {
+        --paper: #f9f6ef;
+        --ink: #393f32;
+        --muted: #727665;
+        --green: #526344;
+        --lavender: #e6dff0;
+        --line: #dedfcf;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #8c729e;
+        outline-offset: 6px;
+      }
+      button:disabled {
+        cursor: default;
+      }
+      ::selection {
+        background: #e6dff0;
+      }
+      .page {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 36px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand svg {
+        width: 25px;
+        height: 30px;
+      }
+      .header-note {
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 1.4px;
+      }
+      .intro {
+        text-align: center;
+        padding: 51px 10px 0;
+      }
+      .eyebrow {
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+        color: var(--green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+      .eyebrow:before,
+      .eyebrow:after {
+        content: "";
+        height: 1px;
+        width: 27px;
+        background: #b9bba5;
+      }
+      h1 {
+        font-size: clamp(42px, 6vw, 70px);
+        font-weight: 400;
+        line-height: 1.08;
+        letter-spacing: -2.7px;
+        margin: 21px 0 20px;
+      }
+      h1 em {
+        color: #7b6b8c;
+        font-weight: 400;
+      }
+      .intro p {
+        font-size: 16px;
+        line-height: 1.8;
+        max-width: 510px;
+        margin: 0 auto;
+        color: #69705d;
+      }
+      .intro p strong {
+        font-weight: 400;
+        color: var(--ink);
+      }
+      .delivery {
+        position: relative;
+        margin: 30px auto 0;
+        text-align: center;
+      }
+      .stage {
+        height: 315px;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        border-radius: 48% 48% 22px 22px;
+        background: radial-gradient(ellipse at 50% 55%, #eee9f1 0%, #f2eee9 42%, #f9f6ef 72%);
+      }
+      .ground {
+        position: absolute;
+        bottom: 18px;
+        left: 6%;
+        width: 88%;
+        height: 56px;
+        border-radius: 50%;
+        background: #e7e9d9;
+        z-index: -1;
+      }
+      .hill {
+        position: absolute;
+        width: 75%;
+        height: 85px;
+        bottom: 24px;
+        left: 12.5%;
+        border-radius: 50%;
+        background: #edf0e2;
+        z-index: -1;
+      }
+      .sun {
+        position: absolute;
+        border: 1px solid #ddd4b5;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        right: 24%;
+        top: 25px;
+      }
+      .sun:after {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border: 1px solid #e6ddc7;
+        border-radius: 50%;
+      }
+      .spark {
+        position: absolute;
+        font-family: Georgia, serif;
+        color: #aa9ab4;
+        font-size: 25px;
+        animation: twinkle 4s infinite ease-in-out;
+      }
+      .s1 {
+        left: 21%;
+        top: 58px;
+      }
+      .s2 {
+        right: 19%;
+        top: 112px;
+        animation-delay: -2s;
+        font-size: 18px;
+      }
+      .s3 {
+        left: 40%;
+        top: 18px;
+        font-size: 14px;
+        animation-delay: -1s;
+      }
+      .little-flower {
+        position: absolute;
+        bottom: 38px;
+        width: 28px;
+        height: 45px;
+      }
+      .f1 {
+        left: 14%;
+        transform: rotate(-12deg);
+      }
+      .f2 {
+        right: 13%;
+        transform: rotate(12deg);
+      }
+      .f3 {
+        right: 25%;
+        bottom: 25px;
+        transform: scale(0.7);
+      }
+      .crew {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        width: 470px;
+        height: 240px;
+        transform: translateX(-50%);
+      }
+      .goblin {
+        position: absolute;
+        bottom: 0;
+        width: 150px;
+        height: 195px;
+        transform-origin: 50% 95%;
+        animation: bob 4s ease-in-out infinite;
+      }
+      .goblin svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .goblin.left {
+        left: 0;
+        transform: rotate(-8deg);
+        animation-delay: -1s;
+      }
+      .goblin.middle {
+        left: 155px;
+        bottom: 0;
+        width: 160px;
+        height: 218px;
+        z-index: 2;
+        animation-delay: -2s;
+      }
+      .goblin.right {
+        right: 0;
+        transform: rotate(8deg);
+        animation-delay: -3s;
+      }
+      .goblin .eyes {
+        transform-origin: 75px 86px;
+        animation: blink 6s infinite;
+      }
+      .goblin.right .eyes {
+        animation-delay: -2s;
+      }
+      .goblin.left .eyes {
+        animation-delay: -4s;
+      }
+      .bouquet {
+        position: absolute;
+        width: 115px;
+        height: 150px;
+        left: 179px;
+        bottom: 4px;
+        z-index: 3;
+        transform: rotate(-5deg);
+        transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .bouquet svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .speech {
+        position: absolute;
+        top: 37px;
+        left: calc(50% - 210px);
+        background: #fffdf7;
+        border: 1px solid #dbdece;
+        border-radius: 14px 14px 0 14px;
+        padding: 10px 15px;
+        font-size: 12px;
+        font-style: italic;
+        transform: rotate(-7deg);
+        z-index: 4;
+      }
+      .caption {
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: #7b806c;
+        margin: 13px 0 20px;
+      }
+      .primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        color: #fffdf6;
+        background: var(--green);
+        border: 1px solid var(--green);
+        border-radius: 100px;
+        padding: 16px 27px;
+        min-width: 245px;
+        font:
+          13px Arial,
+          sans-serif;
+        letter-spacing: 0.25px;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .primary:hover {
+        background: #3e5032;
+        transform: translateY(-2px);
+      }
+      .primary svg {
+        width: 18px;
+        height: 18px;
+      }
+      .no-pressure {
+        color: #7e816f;
+        font:
+          11px Arial,
+          sans-serif;
+        margin: 13px 0 0;
+        line-height: 1.6;
+      }
+      .delivering .goblin.left {
+        animation: stepLeft 1.6s ease-in-out both;
+      }
+      .delivering .goblin.right {
+        animation: stepRight 1.6s ease-in-out both;
+      }
+      .delivering .goblin.middle {
+        animation: offer 1.6s ease-in-out both;
+      }
+      .delivered .bouquet {
+        transform: translateY(-27px) scale(1.35) rotate(0);
+      }
+      .delivered .speech {
+        transform: rotate(-4deg);
+      }
+      .petal {
+        position: absolute;
+        top: 0;
+        width: 9px;
+        height: 14px;
+        border-radius: 80% 0 80% 0;
+        pointer-events: none;
+        animation: fall 3.4s ease-out forwards;
+        z-index: 6;
+      }
+      .gift-message {
+        max-width: 530px;
+        margin: 26px auto 0;
+        padding: 25px 30px;
+        border: 1px solid #dcd5e2;
+        border-radius: 5px;
+        background: #f0ebf3;
+        animation: appear 0.7s ease both;
+      }
+      .gift-message h2 {
+        font-size: 25px;
+        font-weight: 400;
+        margin: 0 0 12px;
+      }
+      .gift-message p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin: 0;
+        color: #66616d;
+      }
+      .gift-message .from {
+        font:
+          10px Arial,
+          sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1.7px;
+        margin-top: 17px;
+        color: #7c6f86;
+      }
+      .replay {
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #bcb1c5;
+        color: #766382;
+        padding: 5px 0;
+        margin-top: 16px;
+        font:
+          11px Arial,
+          sans-serif;
+      }
+      .letter {
+        position: relative;
+        max-width: 650px;
+        margin: 61px auto 0;
+        padding: 38px 43px;
+        background: #fdfbf6;
+        border: 1px solid #e2e0d3;
+        border-radius: 4px;
+        box-shadow: 0 6px 22px #4d533204;
+        transform: rotate(-0.6deg);
+      }
+      .letter:before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: calc(50% - 39px);
+        width: 78px;
+        height: 23px;
+        background: #ded8e6b3;
+        transform: rotate(4deg);
+      }
+      .letter-label {
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #8b7c96;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .letter-label svg {
+        width: 18px;
+        height: 18px;
+      }
+      .letter h2 {
+        font-size: 29px;
+        font-weight: 400;
+        margin: 22px 0 18px;
+        letter-spacing: -0.6px;
+      }
+      .letter p {
+        font-size: 16px;
+        line-height: 1.9;
+        color: #666b5c;
+        margin: 0 0 17px;
+      }
+      .letter p:last-child {
+        margin-bottom: 0;
+      }
+      .signature {
+        font-style: italic;
+        color: #737e60 !important;
+        font-size: 21px !important;
+        padding-top: 5px;
+      }
+      .promises {
+        display: flex;
+        gap: 0;
+        max-width: 700px;
+        margin: 42px auto 0;
+      }
+      .promise {
+        flex: 1;
+        text-align: center;
+        padding: 5px 16px;
+      }
+      .promise + .promise {
+        border-left: 1px solid var(--line);
+      }
+      .promise .icon {
+        font-size: 21px;
+        color: #8a7a98;
+        height: 32px;
+        display: block;
+      }
+      .promise p {
+        font:
+          11px Arial,
+          sans-serif;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 7px 0;
+      }
+      .closing {
+        text-align: center;
+        font-style: italic;
+        font-size: 18px;
+        color: #777e69;
+        margin: 44px 0 35px;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 21px 0 25px;
+        border-top: 1px solid var(--line);
+        font:
+          9px Arial,
+          sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        color: #878a7b;
+      }
+      footer span:last-child {
+        color: #8b7898;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 -6px;
+        }
+      }
+      @keyframes blink {
+        0%,
+        43%,
+        47%,
+        100% {
+          scale: 1 1;
+        }
+        45% {
+          scale: 1 0.1;
+        }
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.35;
+          scale: 0.85;
+        }
+        50% {
+          opacity: 1;
+          scale: 1.1;
+        }
+      }
+      @keyframes stepLeft {
+        0% {
+          translate: 0 0;
+        }
+        30% {
+          translate: 15px -8px;
+        }
+        60% {
+          translate: 20px 0;
+        }
+        80% {
+          translate: 26px -5px;
+        }
+        100% {
+          translate: 30px 0;
+        }
+      }
+      @keyframes stepRight {
+        0% {
+          translate: 0 0;
+        }
+        30% {
+          translate: -15px -8px;
+        }
+        60% {
+          translate: -20px 0;
+        }
+        80% {
+          translate: -26px -5px;
+        }
+        100% {
+          translate: -30px 0;
+        }
+      }
+      @keyframes offer {
+        0% {
+          translate: 0 0;
+        }
+        35% {
+          translate: 0 -8px;
+        }
+        65% {
+          translate: 0 0;
+        }
+        100% {
+          translate: 0 -7px;
+        }
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-15px) rotate(0);
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--drift), 315px) rotate(340deg);
+          opacity: 0;
+        }
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .bouquet {
+        visibility: hidden;
+        opacity: 0;
+        transition:
+          transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 0.7s ease;
+      }
+      .delivered .bouquet {
+        visibility: visible;
+        opacity: 1;
+      }
+      .eyebrow span {
+        max-width: 380px;
+        line-height: 1.7;
+      }
+      .gift-flowers {
+        font-size: 25px;
+        letter-spacing: 8px;
+        margin-bottom: 14px;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      button {
+        touch-action: manipulation;
+        min-height: 44px;
+      }
+      .brand svg,
+      .primary svg {
+        flex-shrink: 0;
+      }
+      @media (max-width: 600px) {
+        .page {
+          padding-left: max(20px, env(safe-area-inset-left));
+          padding-right: max(20px, env(safe-area-inset-right));
+        }
+        header {
+          padding: 18px 0;
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+        .brand {
+          font-size: 10px;
+          letter-spacing: 1.5px;
+          gap: 8px;
+        }
+        .brand svg {
+          width: 22px;
+          height: 27px;
+        }
+        .header-note {
+          font-size: 10px;
+          letter-spacing: 1px;
+        }
+        .intro {
+          padding: 30px 0 0;
+        }
+        .eyebrow {
+          font-size: 9px;
+          letter-spacing: 1.7px;
+          gap: 9px;
+        }
+        .eyebrow:before,
+        .eyebrow:after {
+          width: 18px;
+          flex-shrink: 0;
+        }
+        h1 {
+          font-size: clamp(34px, 9.7vw, 50px);
+          line-height: 1.14;
+          letter-spacing: -1.5px;
+          margin: 18px 0;
+        }
+        .intro p {
+          font-size: 16px;
+          line-height: 1.75;
+          max-width: 360px;
+        }
+        .intro p br {
+          display: none;
+        }
+        .intro p strong {
+          display: block;
+          margin-top: 6px;
+        }
+        .delivery {
+          margin-top: 22px;
+        }
+        .stage {
+          height: 270px;
+          margin: 0 -10px;
+          border-radius: 35% 35% 18px 18px;
+        }
+        .crew {
+          width: 360px;
+          transform: translateX(-50%) scale(0.85);
+          transform-origin: 50% 100%;
+          bottom: 25px;
+        }
+        .goblin.left {
+          left: 0;
+        }
+        .goblin.middle {
+          left: 100px;
+        }
+        .goblin.right {
+          right: 0;
+        }
+        .bouquet {
+          left: 124px;
+        }
+        .speech {
+          left: calc(50% - 137px);
+          top: 17px;
+          font-size: 12px;
+          padding: 9px 12px;
+        }
+        .sun {
+          right: 12%;
+          top: 28px;
+          width: 35px;
+          height: 35px;
+        }
+        .s1 {
+          left: 8%;
+          top: 100px;
+        }
+        .s2 {
+          right: 5%;
+          top: 110px;
+        }
+        .s3 {
+          left: 58%;
+          top: 13px;
+        }
+        .f1 {
+          left: 7%;
+        }
+        .f2 {
+          right: 6%;
+        }
+        .caption {
+          font-size: 10px;
+          line-height: 1.7;
+          letter-spacing: 1.1px;
+          max-width: 300px;
+          margin: 12px auto 18px;
+        }
+        .primary {
+          min-width: 0;
+          width: 100%;
+          max-width: 340px;
+          min-height: 52px;
+          padding: 15px 20px;
+          font-size: 14px;
+          gap: 15px;
+        }
+        .no-pressure {
+          font-size: 12px;
+          line-height: 1.7;
+          max-width: 300px;
+          margin: 12px auto 0;
+        }
+        .gift-message {
+          padding: 25px 20px;
+          margin-top: 23px;
+          text-wrap: pretty;
+        }
+        .gift-message h2 {
+          font-size: 25px;
+          line-height: 1.25;
+        }
+        .gift-message p {
+          font-size: 16px;
+          line-height: 1.8;
+        }
+        .gift-message .from {
+          font-size: 10px;
+          line-height: 1.8;
+          letter-spacing: 1.1px;
+        }
+        .replay {
+          font-size: 13px;
+          line-height: 1.5;
+          padding: 10px 4px;
+          max-width: 100%;
+        }
+        .letter {
+          margin-top: 43px;
+          padding: 30px 22px;
+          transform: none;
+        }
+        .letter-label {
+          font-size: 10px;
+          letter-spacing: 1.5px;
+        }
+        .letter h2 {
+          font-size: 28px;
+          margin: 22px 0 17px;
+        }
+        .letter p {
+          font-size: 16px;
+          line-height: 1.85;
+        }
+        .signature {
+          font-size: 20px !important;
+          line-height: 1.6 !important;
+        }
+        .promises {
+          flex-direction: column;
+          margin: 29px auto 0;
+          max-width: 340px;
+        }
+        .promise {
+          display: flex;
+          align-items: center;
+          text-align: left;
+          gap: 18px;
+          padding: 17px 12px;
+        }
+        .promise + .promise {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+        .promise .icon {
+          flex: 0 0 30px;
+          height: auto;
+          text-align: center;
+          font-size: 25px;
+        }
+        .promise p {
+          font-size: 13px;
+          line-height: 1.7;
+          margin: 0;
+        }
+        .closing {
+          font-size: 18px;
+          line-height: 1.6;
+          margin: 28px auto;
+          max-width: 300px;
+        }
+        footer {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+          gap: 10px;
+          font-size: 10px;
+          line-height: 1.6;
+          letter-spacing: 1px;
+          padding-bottom: max(24px, env(safe-area-inset-bottom));
+        }
+      }
+      @media (max-width: 360px) {
+        .page {
+          padding-left: max(16px, env(safe-area-inset-left));
+          padding-right: max(16px, env(safe-area-inset-right));
+        }
+        .crew {
+          transform: translateX(-50%) scale(0.72);
+        }
+        .stage {
+          height: 245px;
+        }
+        .speech {
+          left: calc(50% - 120px);
+          top: 18px;
+          font-size: 11px;
+        }
+        .letter {
+          padding: 29px 19px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          animation: none !important;
+          transition: none !important;
+        }
+        .petal {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="brand">
+          <svg viewBox="0 0 30 34" aria-hidden="true">
+            <path
+              d="M15 31V12M15 24Q3 23 6 17Q15 16 15 24M15 20Q26 18 24 13Q15 13 15 20"
+              fill="#aab58d"
+              stroke="#768462"
+            />
+            <g fill="#c8b6d8">
+              <ellipse cx="15" cy="7" rx="4" ry="6" />
+              <ellipse cx="10" cy="11" rx="6" ry="4" transform="rotate(30 10 11)" />
+              <ellipse cx="20" cy="11" rx="6" ry="4" transform="rotate(-30 20 11)" />
+            </g>
+            <circle cx="15" cy="11" r="3" fill="#e9c77a" /></svg
+          >A little peace offering
+        </div>
+        <span class="header-note">Made with love, for you</span>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="title">
+          <div class="eyebrow"><span>For the girl who deserves the sweetest things</span></div>
+          <h1 id="title">I’m sorry, <em>my love.</em></h1>
+          <p>
+            I wish I could rewind that moment and choose my words more carefully. Since I can’t, I made you a tiny
+            something with a little help from some very determined goblins.
+          </p>
+        </section>
+        <section class="delivery" aria-label="A little goblin flower delivery">
+          <div
+            class="stage"
+            role="img"
+            aria-label="Three friendly green goblins waiting in a flower meadow with a surprise delivery"
+          >
+            <div class="sun"></div>
+            <span class="spark s1">✧</span><span class="spark s2">✧</span><span class="spark s3">✦</span>
+            <div class="hill"></div>
+            <div class="ground"></div>
+            <div class="speech" id="speech">psst… is this for her?</div>
+            <div class="little-flower f1"></div>
+            <div class="little-flower f2"></div>
+            <div class="little-flower f3"></div>
+            <div class="crew">
+              <div class="goblin left" id="goblin1"></div>
+              <div class="goblin middle" id="goblin2"></div>
+              <div class="goblin right" id="goblin3"></div>
+              <div class="bouquet" id="bouquet"></div>
+            </div>
+          </div>
+          <p class="caption">A very important delivery,<br />handled by the Goblin Flower Service</p>
+          <button class="primary" id="deliver" type="button">
+            Meet your delivery crew
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 12h15m-5-5 5 5-5 5" />
+            </svg>
+          </button>
+          <p class="no-pressure" id="hint">A little surprise, only if you feel like it.</p>
+          <div aria-live="polite" aria-atomic="true">
+            <div class="gift-message" id="gift" hidden>
+              <div class="gift-flowers" aria-hidden="true">💐🌷🌼</div>
+              <h2>“We picked these just for you.”</h2>
+              <p>
+                “Hello! We’re Pip, Moss &amp; Pebble. We brought a little colour for your day. You don’t owe us a smile.
+                We can just leave these here, if you like.”
+              </p>
+              <p class="from">With love, the goblin flower crew ♡</p>
+              <button class="replay" id="replay" type="button">Watch their little delivery again ↻</button>
+            </div>
+          </div>
+        </section>
+        <article class="letter" aria-labelledby="letter-title">
+          <div class="letter-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 6 9 7 9-7" /></svg
+            >A note from me
+          </div>
+          <h2 id="letter-title">A little apology, from my heart</h2>
+          <!-- You can personalise this letter and the signature before sharing. -->
+          <p>My love,</p>
+          <p>
+            I wish I had been more thoughtful with my words. I made something that should have felt lovely feel
+            different. I’m truly sorry. I understand that it hurt, and I don’t want to brush that aside or tell you how
+            you should feel. Even though I didn’t mean to hurt you, I did, and that matters.
+          </p>
+          <p>
+            My intention was never to make you feel less special, or to make flowers feel like something you shouldn’t
+            be excited about. I had been looking forward to giving you your first flowers from me because I wanted to
+            see you smile. But I understand that what I meant and how it made you feel are not the same thing.
+          </p>
+          <p>
+            You don’t have to accept flowers from me. You don’t have to pretend this didn’t hurt, and you don’t owe me a
+            happy reaction. I just want you to know that you are precious to me, and I’ll be more thoughtful with my
+            words and actions. I hear you, and I’ll respect how you feel.
+          </p>
+          <p>You deserve to feel cherished — not just through flowers, but in all the little ways, every day.</p>
+          <p>
+            So, because you said you don’t need flowers from me, I asked these three tiny goblins to bring you a virtual
+            bouquet instead. They took their job very seriously. One of them even practised the handover in front of a
+            mirror.
+          </p>
+          <p>
+            They’re here to offer a tiny bit of sweetness, if you want it. They aren’t here to ask you to change your
+            mind, and this page isn’t a request for you to be okay before you’re ready.
+          </p>
+          <p>
+            I love you. I want to show that by listening, choosing my words with care, and following through with my
+            actions.
+          </p>
+          <p>Whenever you want to tell me more about how this felt, I’m here to listen.</p>
+          <p class="signature">With love, and a promise to be more thoughtful ♡</p>
+        </article>
+        <div class="promises" aria-label="What I want you to know">
+          <div class="promise">
+            <span class="icon" aria-hidden="true">❀</span>
+            <p>You deserve thoughtfulness,<br />in every little thing.</p>
+          </div>
+          <div class="promise">
+            <span class="icon" aria-hidden="true">♡</span>
+            <p>Your feelings matter.<br />I’m here to listen.</p>
+          </div>
+          <div class="promise">
+            <span class="icon" aria-hidden="true">✧</span>
+            <p>No rush. No expectations.<br />Just love, and room for you.</p>
+          </div>
+        </div>
+        <p class="closing">You’ve always been special to me. You always will be.</p>
+      </main>
+      <footer><span>A tiny garden, just for you</span><span>Hand-delivered by goblins ♡</span></footer>
+    </div>
+    <script>
+      // Everything is self-contained: no tracking, external assets, or build step.
+      function goblin(hat, coat, skin, accessory) {
+        return `<svg viewBox="0 0 150 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="75" cy="199" rx="47" ry="7" fill="#cdd4b9" opacity=".55"/>
+      <path d="M51 176l-7 19q14 8 28-1l-2-20m14 0 0 21q16 7 25-1l-11-20" fill="#5d634d"/>
+      <path d="M43 118q31-16 63 0l13 56q-40 21-88 0z" fill="${coat}" stroke="#63704e" stroke-width="1.3"/>
+      <path d="m75 124 0 55m-34-15q35 8 69-1" fill="none" stroke="#63704e" opacity=".5"/>
+      <circle cx="81" cy="143" r="2" fill="#f2ddb0"/><circle cx="81" cy="156" r="2" fill="#f2ddb0"/>
+      <path d="M44 64Q20 49 8 58q8 33 37 36M106 64q24-15 36-6-8 33-37 36" fill="${skin}" stroke="#75845a" stroke-width="1.5"/>
+      <path d="M36 71 18 63q7 14 20 16m76-8 18-8q-7 14-20 16" fill="#a7a17b" opacity=".6"/>
+      <path d="M39 65q2-28 36-29 37 0 38 29v23q0 33-38 34-36-2-36-34z" fill="${skin}" stroke="#75845a" stroke-width="1.4"/>
+      <path d="M35 61q7-25 23-40Q75 0 106 9q-19 7-15 19 20 10 26 35-43-9-82-2" fill="${hat}" stroke="#7b7188" stroke-width="1.3"/>
+      <path d="M33 62q40-10 85 1l-2 10q-42-9-81 0z" fill="${hat}" stroke="#7b7188" stroke-width="1.3"/>
+      <g class="eyes" fill="#394536"><ellipse cx="58" cy="87" rx="3.2" ry="4.6"/><ellipse cx="92" cy="87" rx="3.2" ry="4.6"/></g>
+      <ellipse cx="47" cy="97" rx="8" ry="4" fill="#d5a598" opacity=".65"/><ellipse cx="104" cy="97" rx="8" ry="4" fill="#d5a598" opacity=".65"/>
+      <path d="M71 88q-5 10 5 10" fill="none" stroke="#7e8c63" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M65 105q10 8 21-1" fill="none" stroke="#4c5d40" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M43 128q-14 6-13 22 7 11 26 1m50-23q16 6 14 22-7 10-24 0" fill="${skin}" stroke="#75845a" stroke-width="1.4"/>
+      ${accessory}</svg>`;
+      }
+      document.getElementById("goblin1").innerHTML = goblin(
+        "#c2aed1",
+        "#b7bd91",
+        "#a6bb82",
+        '<path d="m44 139 28 8-9 24-29-9z" fill="#eee4c9" stroke="#aca185"/><path d="m44 147 16 5m-18 1 11 4" stroke="#a29b84"/>',
+      );
+      document.getElementById("goblin2").innerHTML = goblin("#b8a0c7", "#909f78", "#b0c68b", "");
+      document.getElementById("goblin3").innerHTML = goblin(
+        "#d3b58e",
+        "#b4abc4",
+        "#a8bd86",
+        '<path d="M94 131q15-13 22 1l-7 17-18-7z" fill="#d5b1bc"/><path d="m96 136 10 6m-7-10 10 6" stroke="#b28d99"/>',
+      );
+      function flower(x, y, color, size = 1) {
+        return `<g transform="translate(${x} ${y}) scale(${size})"><g fill="${color}" stroke="#fff9" stroke-width=".6"><ellipse cy="-8" rx="5" ry="7"/><ellipse cy="-8" rx="5" ry="7" transform="rotate(72)"/><ellipse cy="-8" rx="5" ry="7" transform="rotate(144)"/><ellipse cy="-8" rx="5" ry="7" transform="rotate(216)"/><ellipse cy="-8" rx="5" ry="7" transform="rotate(288)"/></g><circle r="4" fill="#e8c77b"/></g>`;
+      }
+      document.getElementById("bouquet").innerHTML =
+        `<svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="#748c5d" stroke-width="2" fill="none"><path d="M60 131 27 45M60 131 46 29M60 131 70 29M60 131 94 49M60 131 62 53"/></g><g fill="#8fa775"><ellipse cx="35" cy="66" rx="8" ry="20" transform="rotate(-40 35 66)"/><ellipse cx="84" cy="70" rx="8" ry="21" transform="rotate(40 84 70)"/><ellipse cx="52" cy="57" rx="7" ry="20" transform="rotate(-10 52 57)"/></g>${flower(24, 46, "#e1adbe", 0.95)}${flower(45, 28, "#bca7ce", 1.05)}${flower(72, 29, "#e2b2c1", 1.1)}${flower(94, 48, "#d5c4e2", 0.9)}${flower(59, 54, "#f5e9ce", 1.15)}<path d="m21 77 40 20 39-20-30 70H52z" fill="#ddcba5" stroke="#b8a77f" stroke-width="1"/><path d="m21 77 40 20-9 50m48-70L61 97l9 50" fill="none" stroke="#f1e4c8" stroke-width="2"/><path d="m47 119 28 0" stroke="#a886a8" stroke-width="5"/><path d="M60 121q-26-20-23-4 4 10 23 4 20-19 22-5 0 9-22 5m0 0-11 19m11-19 13 18" fill="none" stroke="#a886a8" stroke-width="3"/></svg>`;
+      document
+        .querySelectorAll(".little-flower")
+        .forEach(
+          (el) =>
+            (el.innerHTML = `<svg viewBox="0 0 30 50" aria-hidden="true"><path d="M15 48V18M15 38Q2 38 5 31q10-1 10 7" stroke="#9fae83" fill="#b6c39b"/>${flower(15, 15, "#d0bfde", 0.65)}</svg>`),
+        );
+      const delivery = document.querySelector(".delivery"),
+        button = document.getElementById("deliver"),
+        speech = document.getElementById("speech"),
+        gift = document.getElementById("gift");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let busy = false;
+      function deliver() {
+        if (busy) return;
+        busy = true;
+        button.disabled = true;
+        delivery.classList.remove("delivering", "delivered");
+        document
+          .querySelector(".stage")
+          .setAttribute("aria-label", "Three friendly green goblins preparing a surprise flower delivery");
+        void delivery.offsetWidth;
+        delivery.classList.add("delivering");
+        speech.textContent = "a very important delivery!";
+        document.getElementById("hint").textContent = "Pip, Moss & Pebble have something for you…";
+        setTimeout(
+          () => {
+            delivery.classList.add("delivered");
+            speech.textContent = "for you. just because. ♡";
+            document
+              .querySelector(".stage")
+              .setAttribute(
+                "aria-label",
+                "Three friendly green goblins offering you a bouquet of pink and lavender flowers",
+              );
+            gift.hidden = false;
+            button.hidden = true;
+            document.getElementById("hint").textContent = "A bouquet to keep here, for as long as you like.";
+            // Move focus only when its original control is being hidden.
+            if (document.activeElement === button) document.getElementById("replay").focus({ preventScroll: true });
+            if (!reduced.matches)
+              for (let i = 0; i < 25; i++) {
+                const p = document.createElement("span");
+                p.className = "petal";
+                p.style.left = 15 + Math.random() * 70 + "%";
+                p.style.background = ["#d7bbd8", "#dccb99", "#bccb9e", "#e6bbc5"][i % 4];
+                p.style.setProperty("--drift", -55 + Math.random() * 110 + "px");
+                p.style.animationDelay = Math.random() * 0.6 + "s";
+                document.querySelector(".stage").appendChild(p);
+                setTimeout(() => p.remove(), 4200);
+              }
+            busy = false;
+            button.disabled = false;
+          },
+          reduced.matches ? 0 : 1500,
+        );
+      }
+      button.addEventListener("click", deliver);
+      document.getElementById("replay").addEventListener("click", deliver);
+    </script>
+  </body>
+</html>
